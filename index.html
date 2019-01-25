@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ludo - Home</title>
+
+  <script src="js/app.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!--Rules Container-->
+  <div class="container">
+    <div class="inner-con">
+      <h1>Ludo</h1>
+      <p>Ludo is a 2-4 player game. At the beginning of the game, each player's four tokens are out of play and staged
+        in the player's yard (one of the large corner areas of the board in the player's colour). When able to, the
+        players will enter their tokens one per time on their respective starting squares, and proceed to race them
+        clockwise around the board along the game track. When reaching the square below his home column, a player
+        continues by moving tokens up the column to the finishing square. The rolls of a single die control the
+        swiftness of the tokens, and entry to the finishing square requires a precise roll from the player. The first
+        to bring all their tokens to the finish wins the game.</p>
+      <h2>Rules &amp; Instructions</h2>
+      <p>Each player rolls the die; the highest roller begins the game. Players alternate turns in a clockwise
+        direction.<br><br>
+
+        To enter a token into play from its yard to its starting square, a player <span class="bold">must roll a 6</span>.
+        If the player has no tokens yet in play and rolls other than a 6, the turn passes to the next player. Once a
+        player has one or more tokens in play, he selects a token and moves it forwards along the track the number of
+        squares indicated by the dice. Players must always move a token according to the dice value rolled. Passes are
+        not allowed; if no move is possible, the turn moves to the next player.<br><br>
+
+        When a 6 is rolled, the player may choose to advance a token already in play, or may enter another staged token
+        to its starting square. Rolling a 6 earns the player an additional or "bonus" roll in that turn. If the bonus
+        roll results in a 6 again, the player earns an additional bonus roll. If the third roll is also a 6, the player
+        may not move and the turn immediately passes to the next player.<br><br>
+
+        Players may not end their move on a square they already occupy. If the advance of a token ends on a square
+        occupied by an opponent's token, the opponent token is returned to its owner's yard. The returned token can be
+        reentered into play only when the owner rolls a 6.</p><br>
+      <button id="playGameBtn">Play Game</button>
+    </div>
+  </div>
+
+  
+  <!--Players-->
+  <div class="container hidden players">
+    <div class="inner-con">
+      <h2>Select Players</h2>
+      <label class="check-container">Player Two
+        <input type="radio" name="player" checked="checked" id="twoRadio">
+      </label>
+      <label class="check-container">Player Three
+        <input type="radio" name="player" id="threeRadio">
+      </label>
+      <label class="check-container"> Player Four
+        <input type="radio" name="player" id="fourRadio">
+      </label><br><br>
+      <button id="startGameBtn">Play Game</button>
+    </div>
+  </div>
+
+  <div class="outer-winner hidden">
+    <div class="inner-winner">
+      <h2 id="winner"></h2>
+    </div>
+  </div>
+
+
+  <!--GAME CONTAINER-->
+  <div class="game-container hidden">
+    <!--Left of Game Board-->
+    <div class="left">
+      <p class="player-name player-red"></p><br>
+      <p class="player-name player-blue"></p><br>
+      <p class="player-name player-yellow"></p><br>
+      <p class="player-name player-green"></p>
+    </div>
+    <!--Game Board-->
+    <div class="center">
+      <div class="grid-container">
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red-home-one">
+          <div class="red-counter red-one"></div>
+        </div>
+        <div class="grid-item red-home-two">
+          <div class="red-counter red-two"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue-home-one">
+          <div class="blue-counter blue-one"></div>
+        </div>
+        <div class="grid-item blue-home-two">
+          <div class="blue-counter blue-two"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red-home-three">
+          <div class="red-counter red-three"></div>
+        </div>
+        <div class="grid-item red-home-four">
+          <div class="red-counter red-four"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue-home-three">
+          <div class="blue-counter blue-three"></div>
+        </div>
+        <div class="grid-item blue-home-four">
+          <div class="blue-counter blue-four"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item blue"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item red"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow-home-one">
+          <div class="yellow-counter yellow-one"></div>
+        </div>
+        <div class="grid-item yellow-home-two">
+          <div class="yellow-counter yellow-two"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green-home-one">
+          <div class="green-counter green-one"></div>
+        </div>
+        <div class="grid-item green-home-two">
+          <div class="green-counter green-two"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow-home-three">
+          <div class="yellow-counter yellow-three"></div>
+        </div>
+        <div class="grid-item yellow-home-four">
+          <div class="yellow-counter yellow-four"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green-home-three">
+          <div class="green-counter green-three"></div>
+        </div>
+        <div class="grid-item green-home-four">
+          <div class="green-counter green-four"></div>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item yellow"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+        <div class="grid-item green"></div>
+      </div>
+    </div>
+    <!--Right of Game Board-->
+    <div class="right">
+      <button class="dice-btn" id="diceButton">Roll Dice</button>
+      <button class="dice-btn" id="turnButton">Pass Turn</button></button><br><br><br>
+      <h2 id="message"></h2>
+    </div>
+  </div>
+
+</body>
+
+</html>
