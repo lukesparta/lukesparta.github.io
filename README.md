@@ -20,3 +20,6 @@ User need to use the mouse and the left click. To roll the dice and pass your tu
 
 ## Implementation:
 This game was implemented using HTML5, CSS3, and JavaScript.
+
+## Link to game
+[Ludo Game](https://lukesparta.github.io/)
