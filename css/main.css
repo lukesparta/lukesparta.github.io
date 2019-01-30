@@ -115,6 +115,9 @@ p{
   height: 35px;
 }
 
+.bold{
+  font-weight: bolder;
+}
 
 .dice-btn{
   width: 100px;
@@ -177,4 +180,14 @@ span{
 
 #message{
   color: #cdcdcd
+}
+
+#dice-gif{
+  width: 162px;
+  height: 162px;
+}
+
+#dice-container > img{
+  width: 100px;
+  height: 100px;
 }

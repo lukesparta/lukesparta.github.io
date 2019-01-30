@@ -45,6 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let blueHomeCount = 0;
   let yellowHomeCount = 0;
   let greenHomeCount = 0;
+  var diceOne = document.getElementById("diceOne");
+  var diceTwo = document.getElementById("diceTwo");
+  var diceThree = document.getElementById("diceThree");
+  var diceFour = document.getElementById("diceFour");
+  var diceFive = document.getElementById("diceFive");
+  var diceSix = document.getElementById("diceSix");
 
   const players = ["red", "blue", "yellow", "green"]
   const playingPlayers = [];
@@ -53,22 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
   //Red Counter Variables
   let redCountersYard = ["red-one", "red-two", "red-three", "red-four"];
   let redCountersPlaying = [];
-  let redCountersPos = [];
 
   //Blue Counter Variables
   let blueCountersYard = ["blue-one", "blue-two", "blue-three", "blue-four"];
   let blueCountersPlaying = [];
-  let blueCountersPos = [];
 
   //Yellow Counter Variables
   let yellowCountersYard = ["yellow-one", "yellow-two", "yellow-three", "yellow-four"];
   let yellowCountersPlaying = [];
-  let yellowCountersPos = [];
 
   //Green Counter Variables
   let greenCountersYard = ["green-one", "green-two", "green-three", "green-four"];
   let greenCountersPlaying = [];
-  let greenCountersPos = [];
 
   document.getElementsByClassName("dice-btn")[1].disabled = true;
 
@@ -81,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const startGame = document.getElementById("startGameBtn");
   let twoRadio = document.getElementById("twoRadio");
   let threeRadio = document.getElementById("threeRadio");
-  let fourRadio = document.getElementById("fourRadio");
 
   var name = document.getElementsByClassName("player-name");
   startGame.addEventListener("click", function () {
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  function createPlayer(numofP){
+  function createPlayer(numofP) {
     for (let i = 0; i < numofP; i++) {
       playingPlayers.push(players[i]);
       if (i === 0) {
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var nextTurnBtn = document.getElementsByClassName("dice-btn")[1];
   diceBtn.addEventListener("click", function () {
     diceBtn.disabled = true;
-    nextTurnBtn.disabled = false;
+    nextTurnBtn.disabled = true;
     var name = document.getElementsByClassName("player-name");
     //If its Red Players Turn
     if (name[0].innerHTML === "red it's your turn") {
@@ -146,6 +147,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let dice = document.getElementById("diceButton");
     let turn = document.getElementById("turnButton");
 
+    setTimeout(function () {
+      nextTurnBtn.disabled = false;
+      if (rd === 6) {
+        diceSix.classList.remove("hidden");
+      } else if (rd === 5) {
+        diceFive.classList.remove("hidden");
+      } else if (rd === 4) {
+        diceFour.classList.remove("hidden");
+      } else if (rd === 3) {
+        diceThree.classList.remove("hidden");
+      } else if (rd === 2) {
+        diceTwo.classList.remove("hidden");
+      } else {
+        diceOne.classList.remove("hidden");
+      }
+    }, 2000);
+
     if (color === "red") {
       counterYard = redCountersYard;
       countersInPlay = redCountersPlaying;
@@ -168,84 +186,116 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //    Rolled a 6 --- Counters in home --- Counters in play --- Start Empty
     if (rd === 6 && counterYard.length > 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML == "") {
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. A counter has been taken from your home and is now in play.`;
-      clickCounter();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. A counter has been taken from your home and is now in play.`;
+        clickCounter();
+      }, 2000);
     }
 
     //    Rolled a 6 --- Counters in home --- No Counters in play --- Start empty
     else if (rd === 6 && counterYard.length > 0 && countersInPlay.length == 0 && gridBox[gamePath[4]].innerHTML == "") {
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. A counter has been taken from your home and is now in play.`;
-      clickCounter();
-    }
-
-    else if (rd === 6 && counterYard.length > 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML != "") {
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. A counter has been taken from your home and is now in play.`;
+        clickCounter();
+      }, 2000);
+    } else if (rd === 6 && counterYard.length > 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML != "") {
       document.getElementsByClassName("dice-btn")[1].disabled = true;
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      listenForClick();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        listenForClick();
+      }, 2000);
     }
 
     //    Rolled a 6 --- No Counters in home -- Counters in play -- Start not empty
     else if (rd === 6 && counterYard.length == 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML != "") {
       document.getElementsByClassName("dice-btn")[1].disabled = true;
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      listenForClick();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        listenForClick();
+      }, 2000);
     }
 
     //    Rolled a 6 --- No Counters in home -- Counters in play -- Start empty
     else if (rd === 6 && counterYard.length == 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML == "") {
       document.getElementsByClassName("dice-btn")[1].disabled = true;
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      listenForClick();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        listenForClick();
+      }, 2000);
     }
 
     //    Rolled any value --- Counters in home -- Counters in Play --- Start not empty
     else if (counterYard.length > 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML != "") {
       document.getElementsByClassName("dice-btn")[1].disabled = true;
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      listenForClick();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        listenForClick();
+      }, 2000);
     }
 
     //    Rolled < 6 --- Counters in home --- Counters in play --- Start Empty
     else if (rd < 6 && counterYard.length > 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML == "") {
       document.getElementsByClassName("dice-btn")[1].disabled = true;
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      listenForClick();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        listenForClick();
+      }, 2000);
+
     }
 
     //    Rolled < 6 --- Counters in home --- No Counters in play --- Start Empty
     else if (rd < 6 && counterYard.length > 0 && countersInPlay.length == 0 && gridBox[gamePath[4]].innerHTML == "") {
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. You have no counters in play and need to roll a 6 to release a counter from your home. Better luck next time.`;
-      clickTurnBtn();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. You have no counters in play and need to roll a 6 to release a counter from your home. Better luck next time.`;
+        clickTurnBtn();
+      }, 2000);
+
     }
 
     //    Rolled < 6 --- NO counters in home --- Counters in play --- Start Empty
     else if (rd < 6 && counterYard.length == 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML == "") {
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      clickTurnBtn();
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        clickTurnBtn();
+      }, 2000);
     }
 
     //    Rolled < 6 --- NO counters in home --- Counters in play --- Start Empty
     else if (rd < 6 && counterYard.length == 0 && countersInPlay.length > 0 && gridBox[gamePath[4]].innerHTML != "") {
-      playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
-      clickTurnBtn();
-    }
-    else {
-      debugger;
-      alert("no condition");
+      setTimeout(function () {
+        playerName.innerHTML = `\n\nYou Rolled a ${rd}. Please click a counter in play to move.`;
+        clickTurnBtn();
+      }, 2000);
+    } else {
+      document.getElementById("message").innerHTML = "No Condition :O";
+      changePlayer();
     }
 
     //  Function to listen for click of the pass turn button and then change player by calling the change player function.
-    function clickTurnBtn(){
+    function clickTurnBtn() {
       passBtn.addEventListener("click", function () {
         document.getElementsByClassName("dice-btn")[0].disabled = false;
         document.getElementsByClassName("dice-btn")[1].disabled = true;
+        if (rd === 6) {
+          diceSix.classList.add("hidden");
+        } else if (rd === 5) {
+          diceFive.classList.add("hidden");
+        } else if (rd === 4) {
+          diceFour.classList.add("hidden");
+        } else if (rd === 3) {
+          diceThree.classList.add("hidden");
+        } else if (rd === 2) {
+          diceTwo.classList.add("hidden");
+        } else {
+          diceOne.classList.add("hidden");
+        }
         changePlayer();
       });
     }
 
 
     //    Function to take counter from players Yard and place it in the start position on the board
-    function clickCounter(){
+    function clickCounter() {
       countersInPlay.push(counterYard.shift());
       var yardCounter = document.getElementsByClassName(countersInPlay[countersInPlay.length - 1])[0];
       document.getElementsByClassName("grid-item")[gamePath[4]].innerHTML = `<div class='${color}-counter'></div>`; // Places counter to start position
@@ -256,28 +306,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     //    Function that listens for the user to click on a square with their counter
-    function listenForClick(){
+    function listenForClick() {
       loopThroughGrid();
       clickTurnBtn();
     }
 
 
-    function sendBackHome(playerColor, indexNum){
+    function sendBackHome(playerColor, indexNum) {
       var cCY;
       var cCP;
-      if(playerColor == "red"){
+      if (playerColor == "red") {
         cCY = redCountersYard
         cCP = redCountersPlaying
-      }
-      else if(playerColor == "blue"){
+      } else if (playerColor == "blue") {
         cCY = blueCountersYard
         cCP = blueCountersPlaying
-      }
-      else if(playerColor == "yellow"){
+      } else if (playerColor == "yellow") {
         cCY = yellowCountersYard
         cCP = yellowCountersPlaying
-      }
-      else{
+      } else {
         cCY = greenCountersYard
         cCP = greenCountersPlaying
       }
@@ -315,7 +362,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   // if the square the player is trying to move to contains one of their counters
                   if (gridBox[gamePath[counterLoc + diceRollValue]].innerHTML == `<div class="${color}-counter"></div>`) {
                     document.getElementById("message").innerHTML = "You already have a counter in the position you want to move to.";
-                  } 
+                  }
+                  //  If player clicks on counter to move that isn't their own.
+                  else if(gridBox[i].innerHTML != "" && gridBox[i].innerHTML != `<div class="${color}-counter"></div>`){
+                    document.getElementById("message").innerHTML = "You can't move this count becuase it doesnt belong to you."
+                    setTimeout(function(){
+                      document.getElementById("message").innerHTML = "";
+                    }, 3000);
+                  }
                   //  if the square the player is trying to move to contains another players cpounter.  
                   else if (gridBox[gamePath[counterLoc + diceRollValue]].innerHTML != `<div class="${color}-counter"></div>` && gridBox[gamePath[counterLoc + diceRollValue]].innerHTML != "") {
                     //  loop thorugh the array of the playing players
@@ -340,17 +394,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                       }
                     }
-                  } 
+                  }
                   //  if players counter has reached home
                   else if (gamePath[counterLoc + diceRollValue] == gamePath[gamePath.length - 1]) {
                     gridBox[i].innerHTML = "";
                     gridBox[gamePath[counterLoc + diceRollValue]].innerHTML = `<div class="${color}-counter"></div>`
                     setTimeout(function () {
+                      var winnerSound = new Audio("audio/winner.wav"); // buffers automatically when created
                       gridBox[gamePath[counterLoc + diceRollValue]].innerHTML = "";
                       if (color == "red") {
                         redHomeCount++
                         redCountersPlaying.shift();
                         if (redHomeCount === 4) {
+                          winnerSound.play();
                           document.getElementById("winner").innerHTML = "<p>Congratulations Red\n\nYou Won !!\n\n</p><br><br><button>Play Again</button>";
                           document.getElementsByClassName("outer-winner")[0].classList.remove("hidden");
                         }
@@ -358,6 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         blueHomeCount++;
                         blueCountersPlaying.shift();
                         if (blueHomeCount === 4) {
+                          winnerSound.play();
                           document.getElementById("winner").innerHTML = "Congratulations Blue\n\nYou Won !!\n\n</p><br><br><button>Play Again</button>"
                           document.getElementsByClassName("outer-winner")[0].classList.remove("hidden");
                         }
@@ -365,6 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         yellowHomeCount++;
                         yellowCountersPlaying.shift();
                         if (yellowHomeCount === 4) {
+                          winnerSound.play();
                           document.getElementById("winner").innerHTML = "Congratulations Yellow\n\nYou Won !!\n\n</p><br><br><button>Play Again</button>"
                           document.getElementsByClassName("outer-winner")[0].classList.remove("hidden");
                         }
@@ -372,25 +430,37 @@ document.addEventListener("DOMContentLoaded", function () {
                         greenHomeCount++;
                         greenCountersPlaying.shift();
                         if (greenHomeCount === 4) {
+                          winnerSound.play();
                           document.getElementById("winner").innerHTML = "Congratulations Green\n\nYou Won !!\n\n</p><br><br><button>Play Again</button>"
                           document.getElementsByClassName("outer-winner")[0].classList.remove("hidden");
                         }
                       }
                     }, 2000);
-
-                  } 
-                  else {
+                  } else {
                     gridBox[gamePath[counterLoc + diceRollValue]].innerHTML = `<div class="${color}-counter"></div>`;
                     gridBox[i].innerHTML = ""; //clear grid item
+                    if (diceRollValue === 6) {
+                      diceSix.classList.add("hidden");
+                    } else if (diceRollValue === 5) {
+                      diceFive.classList.add("hidden");
+                    } else if (diceRollValue === 4) {
+                      diceFour.classList.add("hidden");
+                    } else if (diceRollValue === 3) {
+                      diceThree.classList.add("hidden");
+                    } else if (diceRollValue === 2) {
+                      diceTwo.classList.add("hidden");
+                    } else {
+                      diceOne.classList.add("hidden");
+                    }
                     changePlayer();
                     document.getElementsByClassName("dice-btn")[1].disabled = true;
                     document.getElementsByClassName("dice-btn")[0].disabled = false;
                   }
                 }
-                
+
                 //No space to move counter
                 else {
-                  console.log("you dont have enough space.");
+                  document.getElementById("message").innerHTML = "you dont have enough space.";
                   document.getElementsByClassName("dice-btn")[1].disabled = false;
                   clickTurnBtn();
                 }
@@ -438,7 +508,14 @@ document.addEventListener("DOMContentLoaded", function () {
   } //  END OF PlayerTurn FUNCTION
 
   function rollDice() {
+    var diceSound = new Audio("audio/dice.wav"); // buffers automatically when created
+    var diceGif = document.getElementById("dice-gif");
     var randomNumber = Math.floor(Math.random() * 6) + 1;
+    diceSound.play();
+    diceGif.classList.remove("hidden");
+    setTimeout(function () {
+      diceGif.classList.add("hidden");
+    }, 2000);
     diceRollValue = randomNumber;
     return randomNumber;
   }
