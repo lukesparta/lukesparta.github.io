@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } //  END OF PlayerTurn FUNCTION
 
   function rollDice() {
-    var diceSound = new Audio("audio/dice.wav"); // buffers automatically when created
+    var diceSound = new Audio("../audio/dice.wav"); // buffers automatically when created
     var diceGif = document.getElementById("dice-gif");
     var randomNumber = Math.floor(Math.random() * 6) + 1;
     diceSound.play();
